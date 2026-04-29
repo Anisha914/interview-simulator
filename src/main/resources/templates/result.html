@@ -1,0 +1,95 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="result-page">
+
+<!-- TOP STRIP -->
+<div class="top-bar">
+  <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+  <div id="sidebar" class="sidebar">
+    <h3>Menu</h3>
+    <p onclick="openLeaderboard()">&#127942; Leaderboard</p>
+    <p onclick="openScoreHistory()">&#128200; Score History</p>
+  </div>
+  <button class="btn logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<!-- FULL PAGE RESULT -->
+<div class="result-container">
+  <div class="result-box">
+    <h2>Your Result</h2>
+    <div id="resultBox"></div>
+    <button class="btn" onclick="goHome()">Retake</button>
+  </div>
+</div>
+
+<!-- SCORE HISTORY POPUP -->
+<div id="historyOverlay" class="history-overlay" onclick="closeScoreHistory()"></div>
+<div id="historyBox" class="history-box">
+  <div class="history-header">
+    <h3>&#128200; Score History</h3>
+    <span class="history-close" onclick="closeScoreHistory()">&#10005;</span>
+  </div>
+  <div id="historyContent">Loading...</div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  if(!localStorage.getItem("username")){
+    window.location = "index.html";
+  }
+
+  let result = localStorage.getItem("result");
+  document.getElementById("resultBox").innerHTML = result;
+
+  function goHome(){
+    window.location = "quiz.html";
+  }
+
+  function openScoreHistory(){
+    // close sidebar first
+    document.getElementById("sidebar").classList.remove("active");
+
+    let username = localStorage.getItem("username");
+
+    fetch("http://localhost:8080/score-history?username=" + username)
+    .then(res => res.json())
+    .then(data => {
+      let html = "";
+
+      if(data.length === 0){
+        html = "<p style='text-align:center;color:#888;'>No history found.</p>";
+      } else {
+        html += `<table class="history-table">
+                  <thead><tr><th>Attempt</th><th>Score</th></tr></thead>
+                  <tbody>`;
+        data.forEach(row => {
+          html += `<tr><td>Attempt ${row.attempt}</td><td>${row.score}</td></tr>`;
+        });
+        html += `</tbody></table>`;
+      }
+
+      document.getElementById("historyContent").innerHTML = html;
+      document.getElementById("historyBox").classList.add("active");
+      document.getElementById("historyOverlay").classList.add("active");
+    })
+    .catch(err => {
+      document.getElementById("historyContent").innerHTML = "<p>Error loading history.</p>";
+      document.getElementById("historyBox").classList.add("active");
+      document.getElementById("historyOverlay").classList.add("active");
+    });
+  }
+
+  function closeScoreHistory(){
+    document.getElementById("historyBox").classList.remove("active");
+    document.getElementById("historyOverlay").classList.remove("active");
+  }
+</script>
+
+</body>
+</html>
