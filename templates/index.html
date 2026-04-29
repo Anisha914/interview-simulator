@@ -1,0 +1,63 @@
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-page">
+
+<div class="container">
+
+    <div class="left-side">
+        <h1>Interview Simulator</h1>
+        <p>Practice interview questions, improve your confidence and get instant feedback.</p>
+    </div>
+
+    <div class="right-side">
+        <div class="card">
+            <h2>Login</h2>
+
+            <input class="input" type="text" id="username" placeholder="Username">
+            <input class="input" type="password" id="password" placeholder="Password">
+
+            <button class="btn" onclick="login()">Login</button>
+
+            <p id="msg"></p>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+<script>
+    function login(){
+
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: user,
+            password: pass
+        })
+    })
+    .then(res => res.text())
+    .then(data => {
+        alert(data);
+
+        if(data === "Login success" || data === "User registered"){
+            localStorage.setItem("username", user);
+            window.location = "quiz.html";
+        }
+    });
+}
+</script>
+
+</body>
+</html>

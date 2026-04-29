@@ -1,0 +1,616 @@
+:root {
+    /* Colors */
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --subtext: #64748b;
+    --success: #22c55e;
+    --error: #ef4444;
+
+    /* Spacing */
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 40px;
+
+    /* Radius */
+    --radius: 12px;
+
+    /* Shadow */
+    --shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.login-page {
+    display: block;
+}
+
+/* Main container */
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+/* Input */
+.input {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid #e2e8f0;
+    margin-bottom: var(--space-md);
+}
+
+.input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+/*input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+*/
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+/*button {
+    width: 100%;
+    padding: 12px;
+    background: #667eea;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a67d8;
+}
+*/
+
+/* Question box */
+#questions p {
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Textarea */
+textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+}
+
+/* Result box */
+#resultBox {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    color: #28a745;
+    margin: 20px 0;
+}
+
+/* Small spacing */
+button + button {
+    margin-top: 10px;
+}
+
+/* Full page */
+.login-page {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Main layout */
+.login-page .container {
+    display: flex;
+    height: 100vh;
+    width: 100%;        /* ✅ full width */
+        max-width: none;    /* ✅ remove restriction */
+        padding: 0;         /* ✅ remove inner spacing */
+        border-radius: 0;
+}
+
+
+
+/* LEFT SIDE */
+.login-page .left-side {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+}
+
+/* LEFT TEXT */
+.left-side h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.left-side p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* RIGHT SIDE */
+.login-page .right-side {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background:#d7d8dd ;
+    padding-right: 120px;
+}
+
+/* LOGIN BOX */
+.login-box {
+    width: 380px;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+/* Title */
+.login-box h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Inputs */
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.login-box input:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102,126,234,0.3);
+}
+
+/* Button */
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-page .container {
+    display: flex;
+    height: 100vh;
+    width: 100%;        /* ✅ full width */
+    max-width: none;    /* ✅ remove 450px limit */
+    padding: 0;         /* ✅ remove spacing */
+    border-radius: 0;   /* optional */
+    box-shadow: none;   /* optional */
+}
+
+.login-box button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Message */
+#msg {
+    margin-top: 10px;
+    color: red;
+}
+.login-box {
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+.quiz-page {
+    padding: 40px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.question-card {
+    margin-bottom: 20px;
+}
+
+.result-page {
+    flex: 1; /* takes remaining space automatically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-box {
+    text-align: center;
+}
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.quiz-header h2 {
+    font-size: 22px;
+    color: var(--text);
+}
+
+.logout-btn {
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.question-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    transition: 0.2s;
+}
+
+.question-card:hover {
+    transform: translateY(-2px);
+}
+
+.question-card p {
+     font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--text);
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border-radius: var(--radius);
+    border: 1px solid #e2e8f0;
+   font-size: 14px;
+}
+
+textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.quiz-page {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    color: var(--subtext);
+}
+
+
+
+//RESULT
+
+.result-container {
+   flex:1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.result-box .btn {
+    margin-top: 15px;
+}
+.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+/* Main card */
+.result-box {;
+
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 50px ;
+    border-radius: 20px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+
+    transition: transform 0.3s ease;
+}
+
+.result-box:hover {
+    transform: translateY(-5px);
+}
+
+/* Title */
+.result-box h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+/* Score styling */
+#resultBox {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #00ffcc;
+}
+
+body {
+    margin: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+}
+.top-bar {
+    height: 70px;
+    width: 100%;
+    flex shrink:0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    position: fixed;   /* IMPORTANT */
+    top: 0;
+    left: 0;
+
+    background: white;
+    z-index: 1000;
+}
+
+.hamburger {
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 70px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #1e293b;
+    color: white;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.sidebar p {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.side-menu {
+    position: fixed;
+    left: -250px;
+    top: 70px;
+    width: 250px;
+    height: 100%;
+    background: #1e293b;
+    color: white;
+    transition: 0.3s;
+    padding: 20px;
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+#leaderboardTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#leaderboardTable th,
+#leaderboardTable td {
+    padding: 12px;
+    text-align: center;
+}
+
+#leaderboardTable th {
+    background: #6366f1;
+    color: white;
+}
+
+#leaderboardTable tr:nth-child(even) {
+    background: #f1f5f9;
+}
+
+#leaderboardTable tr:hover {
+    background: #e0e7ff;
+}
+
+/* 🔥 Highlight current user */
+.highlight {
+    background: #22c55e !important;
+    color: white;
+    font-weight: bold;
+}
+
+/* ===== SCORE HISTORY POPUP ===== */
+.history-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 2000;
+}
+
+.history-overlay.active {
+    display: block;
+}
+
+.history-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 340px;
+    max-height: 420px;
+    overflow-y: auto;
+    z-index: 3000;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.history-box.active {
+    display: block;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.history-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #1e293b;
+}
+
+.history-close {
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.history-close:hover {
+    background: #f1f1f1;
+    color: #333;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.history-table th {
+    background: #6366f1;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.history-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+.history-table tr:hover td {
+    background: #f8f8ff;
+}
